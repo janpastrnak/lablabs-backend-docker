@@ -25,7 +25,10 @@ jobs:
       # Source runtime variables
       - name: Source .env
         run: source .env
+      
+      - name: Version echo
+        run: echo ${LABLABS_DOCKER_VERSION      
         
       # Runs a single command using the runners shell
       - name: Backend docker build
-        run: docker build --no-cache -t janpastrnak/lablabs-backend:$LABLABS_DOCKER_VERSION .
+        run: docker build --no-cache -t janpastrnak/lablabs-backend:${LABLABS_DOCKER_VERSION} .

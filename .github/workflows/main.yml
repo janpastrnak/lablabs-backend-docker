@@ -21,9 +21,10 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-        with:
-          env-file: .env
-      
+
+      - name: Load .env
+        run: echo "::set-env name=LABLABS_DOCKER_VERSION::$(cat Dockerfile | grep LABLABS_DOCKER_VERSION= | head -n 1 | grep -o '".*"' | sed 's/"//g')"
+        
       - name: Version echo
         run: echo ${LABLABS_DOCKER_VERSION}      
         

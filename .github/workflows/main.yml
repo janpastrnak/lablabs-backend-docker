@@ -22,12 +22,18 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
+      # Loads env vars from .env file
       - name: Load .env
         run: echo $(grep LABLABS_DOCKER_VERSION .env) >> $GITHUB_ENV
         
+      # Print custom env vars
       - name: Version echo
         run: echo ${LABLABS_DOCKER_VERSION}      
         
-      # Runs a single command using the runners shell
+      # Build docker container
       - name: Backend docker build
         run: docker build --no-cache -t janpastrnak/lablabs-backend:${LABLABS_DOCKER_VERSION} .
+
+      # Pushes the docker image into docker registry
+      - name: Backend docker push
+        run: docker push janpastrnak/lablabs-backend:${LABLABS_DOCKER_VERSION}

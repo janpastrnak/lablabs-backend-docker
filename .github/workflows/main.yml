@@ -22,9 +22,6 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: Source env
-        run: source .env
-
       # Runs a single command using the runners shell
       - name: Backend docker build
-        run: docker build --no-cache -t janpastrnak/lablabs-backend:$LABLABS_DOCKER_VERSION .
+        run: docker build --no-cache -t janpastrnak/lablabs-backend:1.0.0.BUILD-SNAPSHOT .

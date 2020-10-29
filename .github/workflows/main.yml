@@ -23,7 +23,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Load .env
-        run: cat $(cat .env) | grep LABLABS_DOCKER_VERSION= | head -n 1 | grep -o '".*"' | sed 's/"//g' >> ${LABLABS_DOCKER_VERSION}
+        run: echo $(grep LABLABS_DOCKER_VERSION .env | cut -d '=' -f2) > ${LABLABS_DOCKER_VERSION}
         
       - name: Version echo
         run: echo ${LABLABS_DOCKER_VERSION}      

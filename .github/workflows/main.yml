@@ -23,7 +23,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Load .env
-        run: cat $(grep LABLABS_DOCKER_VERSION .env | cut -d '=' -f2) > LABLABS_DOCKER_VERSION
+        run: echo $(grep LABLABS_DOCKER_VERSION .env) >> $GITHUB_ENV
         
       - name: Version echo
         run: echo ${LABLABS_DOCKER_VERSION}      

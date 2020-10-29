@@ -27,7 +27,7 @@ jobs:
         run: source .env
       
       - name: Version echo
-        run: echo ${LABLABS_DOCKER_VERSION      
+        run: echo ${LABLABS_DOCKER_VERSION}      
         
       # Runs a single command using the runners shell
       - name: Backend docker build

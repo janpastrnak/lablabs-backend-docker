@@ -21,10 +21,8 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
-      # Source runtime variables
-      - name: Source .env
-        run: source .env
+        with:
+          env-file: .env
       
       - name: Version echo
         run: echo ${LABLABS_DOCKER_VERSION}      

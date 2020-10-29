@@ -1,0 +1,1 @@
+docker run --name jpago --rm -i -t -p 8080:8080 janpastrnak/lablabs-backend:1.0.0.BUILD-SNAPSHOT

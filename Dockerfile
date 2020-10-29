@@ -13,16 +13,17 @@ WORKDIR /home/lablabs
 
 USER root
 
-RUN mkdir /tmp/backend
-RUN mkdir /opt/runtime
+RUN mkdir /tmp/backend && \
+    mkdir /opt/runtime
 
 COPY main_test.go main.go /tmp/backend/
 
 WORKDIR /tmp/backend/
-RUN go build
-RUN mv /tmp/backend/backend /opt/runtime/
-RUN chown root:lablabs /opt/runtime
-RUN chmod +x /opt/runtime/backend
+RUN go build  && \
+    mv /tmp/backend/backend /opt/runtime/  && \
+    rm -rf /tmp/backend  && \
+    chown root:lablabs /opt/runtime  && \
+    chmod +x /opt/runtime/backend
 
 WORKDIR opt/runtime
 
